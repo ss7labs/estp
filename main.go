@@ -42,7 +42,12 @@ func (c *CurrConfig) Task(m *sync.Mutex) {
 	}
 	m.Lock()
 	defer m.Unlock()
-  c.PeerAvailable()
+  if c.PeerAvailable() {
+    c.IsPeerAvailable = true
+  } else {
+    c.IsPeerAvailable = false
+	  log.Trace().Msg("Peer not available")
+  }
 	log.Trace().Msg(strconv.Itoa(interval) + " sec task")
 }
 

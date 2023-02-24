@@ -6,6 +6,7 @@ import (
 	"net/rpc"
   "time"
   "strconv"
+  "errors"
 )
 
 type Listener struct {
@@ -51,19 +52,22 @@ func rpcPing(ip string) error {
 	}
 	defer client.Close()
 
-  var reply bool 
+  reply := false 
 	var line []byte
 
   log.Trace().Msg(strconv.FormatBool(reply))
 	line = []byte("ping")
 
-  waitRpc := client.Go("Listener.Pong", line, reply, nil)
+  waitRpc := client.Go("Listener.Pong", line, &reply, nil)
 	<-waitRpc.Done
 
   if waitRpc.Error != nil {
 		return waitRpc.Error
 	}
 	log.Trace().Msg(strconv.FormatBool(reply))
+  if !reply {
+    return errors.New("Peer "+ip+" not available")
+  }
   return nil
 }
 
