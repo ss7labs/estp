@@ -1,0 +1,19 @@
+#!/bin/bash
+
+cmd=$1
+
+if [ $cmd == 'interfaces' ]
+then
+echo "  Interface        Lanes    Speed    MTU    FEC            Alias    Vlan    Oper    Admin             Type    Asym PFC    Oper Speed"
+echo "-----------  -----------  -------  -----  -----  ---------------  ------  ------  -------  ---------------  ----------  ------------"
+echo " Ethernet36  37,38,39,40     100G   9100     rs  Eth10/1(Port10)   trunk      up      up  QSFP28 or later         N/A          100G"
+exit
+fi
+
+if [ $cmd == 'vlan' ]
+then
+echo "Vlan100     100  Ethernet0       tagged"
+echo "Vlan90     90  Ethernet0      tagged"
+#echo "Vlan702     702  Ethernet125     tagged"
+fi
+

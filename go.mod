@@ -7,6 +7,7 @@ require github.com/go-co-op/gocron v1.18.0
 require (
 	github.com/go-ping/ping v1.1.0 // indirect
 	github.com/google/uuid v1.2.0 // indirect
+	github.com/keegancsmith/shell v0.0.0-20160208231706-ccb53e0c7c5c // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/praserx/ipconv v1.2.1 // indirect
